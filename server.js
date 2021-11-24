@@ -21,8 +21,8 @@ const server = app.listen(port, () => {
 
 const io = socket(server, {
   cors:{
-    //origin:"http://localhost:3000"
-    origin:"https://fridge-sigma.vercel.app"
+    origin:"http://localhost:3000"
+    //origin:"https://fridge-sigma.vercel.app"
   }
 })
 
@@ -43,6 +43,11 @@ io.on('connection', function(socket) {
   socket.on('shop', function() {
     console.log('clicked on the Shop button')
     socket.broadcast.emit('shop')
+  })
+
+  socket.on('welcome', function() {
+    console.log('a user opened the welcome page')
+    socket.broadcast.emit('welcome')
   })
   
 })
