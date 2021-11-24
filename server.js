@@ -21,6 +21,7 @@ const server = app.listen(port, () => {
 
 const io = socket(server, {
   cors:{
+    //origin:"http://localhost:3000"
     origin:"https://fridge-sigma.vercel.app"
   }
 })
@@ -29,8 +30,21 @@ const io = socket(server, {
 // Listen for the connection
 
 io.on('connection', function(socket) {
+
   console.log('made socket connection')
-  console.log(socket.id)
+
+  console.log(socket.id);
+
+  socket.on('game', function() {
+    console.log('clicked on the play button')
+    socket.broadcast.emit('game')
+  })
+
+  socket.on('shop', function() {
+    console.log('clicked on the Shop button')
+    socket.broadcast.emit('shop')
+  })
+  
 })
 
 process.on('unhandledRejection', err => {
