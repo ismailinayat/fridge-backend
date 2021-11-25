@@ -22,6 +22,7 @@ const server = app.listen(port, () => {
 const io = socket(server, {
   cors:{
     //origin:"http://localhost:3000"
+    //origin:"http://127.0.0.1:5500"
     origin:"https://fridge-sigma.vercel.app"
   }
 })
@@ -48,6 +49,25 @@ io.on('connection', function(socket) {
   socket.on('welcome', function() {
     console.log('a user opened the welcome page')
     socket.broadcast.emit('welcome')
+  })
+
+  socket.on('update', function() {
+    console.log('update function triggered on the game')
+    socket.broadcast.emit('update')
+  })
+
+  socket.on('launch', function(data) {
+
+    console.log('launch function triggered on the game')
+    console.log(data)
+    socket.broadcast.emit('launch', data)
+  })
+
+  socket.on('createball', function(data) {
+
+    console.log('create ball function triggered on the game')
+    console.log(data)
+    socket.broadcast.emit('createball', data)
   })
   
 })
