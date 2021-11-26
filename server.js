@@ -69,6 +69,35 @@ io.on('connection', function(socket) {
     console.log(data)
     socket.broadcast.emit('createball', data)
   })
+
+  socket.on('left', function() {
+
+    console.log('left clicked on mobile')
+    socket.broadcast.emit('left')
+  })
+  socket.on('right', function() {
+
+    console.log('right clicked on mobile')
+    socket.broadcast.emit('right')
+  })
+
+  socket.on('top', function() {
+
+    console.log('top clicked on mobile')
+    socket.broadcast.emit('top')
+  })
+
+  socket.on('bottom', function() {
+
+    console.log('bottom clicked on mobile')
+    socket.broadcast.emit('bottom')
+  })
+
+  socket.on('ok', function() {
+
+    console.log('ok clicked on mobile')
+    socket.broadcast.emit('ok')
+  })
   
 })
 

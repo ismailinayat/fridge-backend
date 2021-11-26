@@ -1,8 +1,6 @@
 const path = require('path');
 const express = require('express');
 
-const globalErrorHandler = require('./controllers/errorController');
-const AppError = require('./utils/appError');
 
 const cors = require('cors');
 
@@ -22,7 +20,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-
-app.use(globalErrorHandler);
 
 module.exports = app;
