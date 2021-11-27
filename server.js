@@ -98,6 +98,12 @@ io.on('connection', function(socket) {
     console.log('ok clicked on mobile')
     socket.broadcast.emit('ok')
   })
+
+  socket.on('change-leds', function(data) {
+
+    console.log('change-leds button clicked on mobile')
+    io.sockets.emit('change-leds', data)
+  })
   
 })
 
